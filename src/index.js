@@ -20,6 +20,7 @@ const nav = () => {
     menu_anchor.id = "menu";
     contact_anchor.id = "contact";
 
+    home_anchor.classList.add('active');
     home_anchor.textContent = "Home";
     menu_anchor.textContent = "Menu";
     contact_anchor.textContent = "Contact";
@@ -37,13 +38,17 @@ const nav = () => {
     home.render();
   }
 
-  const toggleActiveTab = () => {
-    const tabs = document.querySelector('nav')
+  const clearPreviousActiveTab = () => {
+    let tabs = document.querySelectorAll('.active');
+    tabs.forEach((tab) => { tab.classList.remove('active') });
   }
 
   const home_nav = () => {
     const home = document.getElementById("home");
+
     home.onclick = () => {
+      clearPreviousActiveTab();
+      home.classList.add('active');
       resetPage();
       const nav_h = nav_home()
       nav_h.render();
@@ -52,7 +57,10 @@ const nav = () => {
 
   const menu_nav = () => {
     const menu = document.getElementById("menu");
+
     menu.onclick = () => {
+      clearPreviousActiveTab();
+      menu.classList.add('active')
       resetPage();
       const nav_m = nav_menu()
       nav_m.render();
@@ -61,7 +69,10 @@ const nav = () => {
 
   const contact_nav = () => {
     const contact = document.getElementById("contact");
+
     contact.onclick = () => {
+      clearPreviousActiveTab();
+      contact.classList.add('active')
       resetPage();
       const nav_c = nav_contact()
       nav_c.render();
